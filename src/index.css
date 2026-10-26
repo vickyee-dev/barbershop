@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink-50: #f3f5f8;
+  --color-ink-100: #e4e8ee;
+  --color-ink-200: #cfd6e2;
+  --color-ink-300: #a7b1c4;
+  --color-ink-500: #5b6b85;
+  --color-ink-600: #46546d;
+  --color-ink-700: #2a3a5c;
+  --color-ink-800: #1a2742;
+  --color-ink-900: #101a2e;
+  --color-ink-950: #0b1220;
+
+  --color-pole: #c0272d;
+  --color-pole-dark: #9d1d23;
+  --color-pole-blue: #2c5fa8;
+  --color-chalk: #f8f9fb;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--color-chalk);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-pole-blue);
+    outline-offset: 2px;
+  }
+  button:not(:disabled),
+  [role="button"] {
+    cursor: pointer;
+  }
+}
+
+/* The barber pole: the one decorative motif, used as a structural divider. */
+.pole-stripe {
+  background: repeating-linear-gradient(
+    -45deg,
+    #c0272d 0 12px,
+    #f8f9fb 12px 24px,
+    #2c5fa8 24px 36px,
+    #f8f9fb 36px 48px
+  );
+}
+
+/* Appointment ticket: two halves with punched notches where they meet. */
+.ticket {
+  --r: 11px;
+  filter: drop-shadow(0 8px 18px rgb(16 26 46 / 0.12));
+}
+.ticket-top {
+  -webkit-mask:
+    radial-gradient(circle var(--r) at 0 100%, #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--r) at 100% 100%, #0000 97%, #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle var(--r) at 0 100%, #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--r) at 100% 100%, #0000 97%, #000) right / 51% 100% no-repeat;
+}
+.ticket-bottom {
+  -webkit-mask:
+    radial-gradient(circle var(--r) at 0 0, #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--r) at 100% 0, #0000 97%, #000) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle var(--r) at 0 0, #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle var(--r) at 100% 0, #0000 97%, #000) right / 51% 100% no-repeat;
+}
+
+/* One orchestrated entrance on the landing hero. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.reveal {
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+}
+
+dialog {
+  color: inherit;
+}
