@@ -4,6 +4,23 @@ A booking site for a barbershop, with a customer side and a staff side. Customer
 
 Built with React 19, Vite 7 and Tailwind CSS 4. There is no backend: data is saved in the browser's `localStorage`, so it is a complete, working demo and a solid front end to connect to a real API later.
 
+## Screenshots
+
+### Home Page
+![Barbershop Home Page](hero.png)
+
+### Barbershop Services and Pricing
+![Services and Prices](prices.png)
+
+### Our Work
+![Barbershop Gallery](our-work.png)
+
+### Booking and Management
+![Barbershop Admin Dashboard](admin.png)
+
+### Barbershop Overview
+![Barbershop](barbers.png)
+
 ## Run it
 
 ```bash
